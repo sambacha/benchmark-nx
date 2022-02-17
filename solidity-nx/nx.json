@@ -1,0 +1,24 @@
+{
+  "extends": "@nrwl/workspace/presets/core.json",
+  "npmScope": "solidity-nx",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/workspace"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "MzBiYmZmMjAtM2M4OC00YzdhLWI1YjgtMWFmZWE2NDdkYjA5fHJlYWQtd3JpdGU="
+      }
+    }
+  }
+}
