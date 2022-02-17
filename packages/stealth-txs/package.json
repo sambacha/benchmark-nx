@@ -1,0 +1,60 @@
+{
+  "name": "@yearn/stealth-txs",
+  "version": "0.2.0",
+  "description": "Enforces private realyer transactions while keeping safety from uncled transactions",
+  "homepage": "https://github.com/yearn/hardhat-monorepo/tree/main/packages/stealth-txs#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yearn/hardhat-monorepo",
+    "directory": "packages/stealth-txs"
+  },
+  "license": "GNU V3",
+  "files": [
+    "contracts",
+    "!contracts/mock",
+    "!artifacts/contracts/mock/**/*.json",
+    "!artifacts/contracts/**/**/*.dbg.json",
+    "typechained",
+    "deployments",
+    "!deployments/localhost",
+    "!.env"
+  ],
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "coverage": "npx hardhat coverage",
+    "docs": "solidity-docgen --solc-module solc-0.8",
+    "fork": "FORK=true npx hardhat node",
+    "fork:script": "FORK=true npx hardhat run",
+    "fork:test": "FORK=true npx hardhat test",
+    "lint:check": "solhint 'contracts/**/*.sol' && prettier --check './**'",
+    "lint:fix": "sort-package-json && prettier --write './**' && solhint --fix 'contracts/**/*.sol'",
+    "sizer": "TEST=true hardhat compile && TEST=true npx hardhat size-contracts",
+    "test": "TEST=true npx hardhat compile && TEST=true npx hardhat test",
+    "test:all": "yarn test ./test/e2e/*.spec.ts test/integration/*.spec.ts test/unit/*.spec.ts",
+    "test:e2e": "yarn test ./test/e2e/*.spec.ts",
+    "test:gas": "yarn test ./test/e2e/*.spec.ts test/unit/*.spec.ts",
+    "test:integration": "yarn test ./test/integration/*.spec.ts",
+    "test:unit": "yarn test test/unit/*.spec.ts",
+    "watcher:start:goerli": "npx hardhat run ./scripts/watcher/yearn.ts --network goerli",
+    "watcher:start:mainnet": "pm2 start \"npx hardhat run ./scripts/watcher/yearn.ts --network mainnet\" --exp-backoff-restart-delay=1000"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "4.3.2",
+    "@yearn/contract-utils": "file:../contract-utils"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    {
+      "name": "b0dhidharma",
+      "email": "b0dhidharma@protonmail.com",
+      "url": "https://github.com/b0dhidharma"
+    },
+    {
+      "name": "Luciano Bertenasco",
+      "email": "lbertenasco@gmail.com",
+      "url": "https://github.com/lbertenasco"
+    }
+  ]
+}
