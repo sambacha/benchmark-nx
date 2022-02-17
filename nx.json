@@ -1,24 +1,40 @@
 {
   "extends": "@nrwl/workspace/presets/core.json",
-  "npmScope": "solidity-nx",
+  "npmScope": "yearn",
   "affected": {
     "defaultBase": "master"
   },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
   },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": [
-          "build",
+          "compile",
           "lint",
           "test",
-          "e2e"
+          "build"
         ],
         "accessToken": "MzBiYmZmMjAtM2M4OC00YzdhLWI1YjgtMWFmZWE2NDdkYjA5fHJlYWQtd3JpdGU="
       }
     }
-  }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "compile",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "defaultProject": "nx-bench"
 }

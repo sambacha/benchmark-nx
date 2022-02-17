@@ -1,4 +1,10 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "commons": "packages/commons",
+    "contract-utils": "packages/contract-utils",
+    "stealth-txs": "packages/stealth-txs",
+    "strategies-keep3r": "packages/strategies-keep3r",
+    "yswaps": "packages/yswaps"
+  }
 }
